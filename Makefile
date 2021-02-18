@@ -6,24 +6,35 @@
 #    By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/25 12:05:05 by jealee            #+#    #+#              #
-#    Updated: 2021/02/18 15:05:55 by jealee           ###   ########.fr        #
+#    Updated: 2021/02/18 15:12:39 by jealee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+#ft_printf
 NAME		= libftprintf.a
+#libft
 LIBFT		= libft
 LIBFTL	    = libft.a
-SRCS		= ft_printf.c \
 
+#ft_printf relevant sources
+SRCS		= ft_printf.c 
 OBJS		= $(SRCS:.c=.o)
+
+#ft_printf header dir
 INCS		= .
+
+#remove
 RM			= rm -rf
+
+#compile
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -c
+#archive
 AR			= ar
 ARFLAGS     = crs
+
 %.o :%.c
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I$(INCS)
+	$(CC) $(CFLAGS) $^ -o $@ -I$(INCS)
 
 $(NAME) : $(OBJS)
 	make all -C $(LIBFT)/

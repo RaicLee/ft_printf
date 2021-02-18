@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/18 12:51:13 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/18 13:23:18 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,6 @@
 
 int	ft_printf(const char	*format, ...)
 {
+	format = NULL;
+	return (0);
 }

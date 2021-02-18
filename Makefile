@@ -6,38 +6,40 @@
 #    By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/25 12:05:05 by jealee            #+#    #+#              #
-#    Updated: 2021/02/18 13:37:50 by jealee           ###   ########.fr        #
+#    Updated: 2021/02/18 14:43:23 by jealee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-FLAGS = -Wall -Wextra -Werror
-SRC = ft_printf.c
-OBJ = $(SRC:.c=.o)
-INC_LINK = -I./includes
-LIBFT = -L./libft -lft
+NAME		= libftprintf.a
+LIBFT		= libft
+LIBFT_LIB	= libft.a
+
+SRCS		= ft_printf.c
+OBJS		= $(SRCS:.c=.o)
+INCS		= .
+RM			= rm -f
+LIBC		= ar rcs
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror
+
+.c.o :
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I$(INCS)
+
+$(NAME) : $(OBJS)
+	make all -C $(LIBFT)/
+	cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
+	$(LIBC) $(NAME) $(OBJS)
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) libft
-	cp Libft/libft.a ./$(NAME)
-	ar rsc $(NAME) $(OBJ)
-
-%.o: %.c
-	gcc $(FLAGS) $(INC_LINK) -c $< -o $(<:.c=.o)
-
-# libft compile
-libft :
-	@$(MAKE) -C ./libft all
+fclean : clean
+	$(RM) $(NAME)
+	make fclean -C $(LIBFT)
 
 clean :
-	@$(MAKE) -C ./libft clean
-	@rm -rf $(OBJ)
-fclean : clean
-	@$(MAKE) -C ./libft fclean
-	@rm -rf $(NAME)
+	$(RM) $(OBJS)
+	make clean -C $(LIBFT)
 
 re : fclean all
 
-# to execute with virtual command
 .PHONY: all clean fclean re libft

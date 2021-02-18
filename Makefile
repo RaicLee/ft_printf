@@ -6,7 +6,7 @@
 #    By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/25 12:05:05 by jealee            #+#    #+#              #
-#    Updated: 2021/02/18 14:47:27 by jealee           ###   ########.fr        #
+#    Updated: 2021/02/18 15:05:55 by jealee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 AR			= ar
 ARFLAGS     = crs
-.c.o :
+%.o :%.c
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I$(INCS)
 
 $(NAME) : $(OBJS)

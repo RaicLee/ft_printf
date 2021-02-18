@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 16:18:52 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/18 16:30:12 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/19 00:03:42 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,3 +22,5 @@ void	block_initialize(t_info *block)
 	block->base_num = 10;
 	block->sign_num = 1;
 }
+
+

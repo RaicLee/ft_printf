@@ -6,29 +6,29 @@
 #    By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/25 12:05:05 by jealee            #+#    #+#              #
-#    Updated: 2021/02/18 14:43:23 by jealee           ###   ########.fr        #
+#    Updated: 2021/02/18 14:47:27 by jealee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libftprintf.a
 LIBFT		= libft
-LIBFT_LIB	= libft.a
+LIBFTL	    = libft.a
+SRCS		= ft_printf.c \
 
-SRCS		= ft_printf.c
 OBJS		= $(SRCS:.c=.o)
 INCS		= .
-RM			= rm -f
-LIBC		= ar rcs
+RM			= rm -rf
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
-
+AR			= ar
+ARFLAGS     = crs
 .c.o :
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I$(INCS)
 
 $(NAME) : $(OBJS)
 	make all -C $(LIBFT)/
-	cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
-	$(LIBC) $(NAME) $(OBJS)
+	cp $(LIBFT)/$(LIBFTL) $(NAME)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 all : $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/18 16:34:53 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/19 00:11:51 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		ft_printformat(va_list ap, char *format)
 		}
 	}
 	free(block);
+	va_arg(ap,int);
 	return (result);
 }
 

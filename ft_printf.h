@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:13:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/19 14:08:26 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/19 20:47:23 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ int				ft_printformat(va_list ap, char *format);
 
 void			block_initialize(t_info	*block);
 int				ft_putchar(char ch);
+int				ft_chartoint(char ch);
 #endif

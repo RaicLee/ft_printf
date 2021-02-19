@@ -2,3 +2,5 @@ pft_2019/
 42TESTERS-PRINTF/
 tests451/
 readme
+removeTesters.sh
+restoreTesters.sh

@@ -6,11 +6,23 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/19 00:11:51 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/19 14:17:33 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	append_block_info(va_list ap, char *format, t_info *block, int i)
+{
+	if (format[i] == '0' && block->width == 0 && block->precision == -1)
+		block->zero = 1;
+	else if (format[i] == '-')
+		block->minus = 1;
+	else if (format[i] == '.')
+		block->precision = 0;
+	else if (ft_isdigit(format[i]) || format[i] == '*')
+		check_
+}
 
 int		ft_printformat(va_list ap, char *format)
 {
@@ -30,11 +42,12 @@ int		ft_printformat(va_list ap, char *format)
 		if (format[i] == '%')
 		{
 			block_initialize(block);
-			i++;
+			while (format[++i] && !ft_strchr(TYPE, format[i]))
+				append_block_info(ap, format, block, i);
+			block->type = format[i++];
 		}
 	}
 	free(block);
-	va_arg(ap,int);
 	return (result);
 }
 

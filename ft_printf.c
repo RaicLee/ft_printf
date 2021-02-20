@@ -6,11 +6,25 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/19 20:52:41 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/20 23:17:40 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		printBlockType(va_list ap, t_info *block)
+{
+	int		result;
+	char	type;
+
+	result = 0;
+	type = block->type;
+	if (type == 'c')
+		result = ft_print_char(va_arg(ap,int),block);
+	else if (type == '%')
+		result = ft_print_char('%',block);
+	return (result);
+}
 
 void	check_width_and_prec(va_list ap, char *format, t_info *block, int i)
 {
@@ -70,6 +84,8 @@ int		ft_printformat(va_list ap, char *format)
 			while (format[++i] && !ft_strchr(TYPE, format[i]))
 				append_block_info(ap, format, block, i);
 			block->type = format[i++];
+			if ((block->minus == 1 || block->precision > -1) && block->type != '%')
+				block->zero = 0;
 			result += printBlockType(ap, block);
 		}
 	}

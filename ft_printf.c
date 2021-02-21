@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/20 23:17:40 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/21 20:41:57 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int		printBlockType(va_list ap, t_info *block)
 	char	type;
 
 	result = 0;
-	type = block->type;
+	type = block->t;
 	if (type == 'c')
-		result = ft_print_char(va_arg(ap,int),block);
+		result = ft_print_char(va_arg(ap, int), block);
 	else if (type == '%')
-		result = ft_print_char('%',block);
+		result = ft_print_char('%', block);
 	return (result);
 }
 
@@ -30,35 +30,35 @@ void	check_width_and_prec(va_list ap, char *format, t_info *block, int i)
 {
 	if (ft_isdigit(format[i]))
 	{
-		if (block->precision == -1)
-			block->width = block->width * 10 + ft_chartoint(format[i]);
+		if (block->p == -1)
+			block->w = block->w * 10 + ft_chartoint(format[i]);
 		else
-			block->precision = block->precision * 10 + ft_chartoint(format[i]);
+			block->p = block->p * 10 + ft_chartoint(format[i]);
 	}
 	else if (format[i] == '*')
 	{
-		if (block->precision == -1)
+		if (block->p == -1)
 		{
-			block->width = va_arg(ap, int);
-			if (block->width < 0)
+			block->w = va_arg(ap, int);
+			if (block->w < 0)
 			{
-				block->minus = 1;
-				block->width = block->width * -1;
+				block->m = 1;
+				block->w = block->w * -1;
 			}
 		}
 		else
-			block->precision = va_arg(ap, int);
+			block->p = va_arg(ap, int);
 	}
 }
 
 void	append_block_info(va_list ap, char *format, t_info *block, int i)
 {
-	if (format[i] == '0' && block->width == 0 && block->precision == -1)
-		block->zero = 1;
+	if (format[i] == '0' && block->w == 0 && block->p == -1)
+		block->z = 1;
 	else if (format[i] == '-')
-		block->minus = 1;
+		block->m = 1;
 	else if (format[i] == '.')
-		block->precision = 0;
+		block->p = 0;
 	else if (ft_isdigit(format[i]) || format[i] == '*')
 		check_width_and_prec(ap, format, block, i);
 }
@@ -71,8 +71,7 @@ int		ft_printformat(va_list ap, char *format)
 
 	i = 0;
 	result = 0;
-	block = (t_info*)malloc(sizeof(t_info));
-	if (!block)
+	if (!(block = (t_info*)malloc(sizeof(t_info))))
 		return (-1);
 	while (format[i])
 	{
@@ -83,9 +82,9 @@ int		ft_printformat(va_list ap, char *format)
 			block_initialize(block);
 			while (format[++i] && !ft_strchr(TYPE, format[i]))
 				append_block_info(ap, format, block, i);
-			block->type = format[i++];
-			if ((block->minus == 1 || block->precision > -1) && block->type != '%')
-				block->zero = 0;
+			block->t = format[i++];
+			if ((block->m == 1 || block->p > -1) && block->t != '%')
+				block->z = 0;
 			result += printBlockType(ap, block);
 		}
 	}

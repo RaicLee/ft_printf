@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:13:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/21 20:40:32 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/21 20:56:16 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ int				ft_putchar(char ch);
 int				ft_chartoint(char ch);
 
 int				ft_print_char(int c, t_info *block);
+int				ft_char_width(int width, int len, int zero);
 #endif

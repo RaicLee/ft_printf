@@ -6,13 +6,13 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/21 20:41:57 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/21 20:44:04 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		printBlockType(va_list ap, t_info *block)
+int		ft_print_block(va_list ap, t_info *block)
 {
 	int		result;
 	char	type;
@@ -85,7 +85,7 @@ int		ft_printformat(va_list ap, char *format)
 			block->t = format[i++];
 			if ((block->m == 1 || block->p > -1) && block->t != '%')
 				block->z = 0;
-			result += printBlockType(ap, block);
+			result += ft_print_block(ap, block);
 		}
 	}
 	free(block);

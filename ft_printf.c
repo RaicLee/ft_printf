@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/21 21:26:06 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/22 00:09:31 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int		ft_print_block(va_list ap, t_info *block)
 		result = ft_print_char(va_arg(ap, int), block);
 	else if (type == '%')
 		result = ft_print_char('%', block);
+	else if (type == 'd' || type == 'i')
+		result = ft_print_number(va_arg(ap, int), block);
 	return (result);
 }
 

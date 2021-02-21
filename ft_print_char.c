@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 23:20:43 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/21 20:55:36 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/21 21:14:10 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	ft_print_char(int toprint, t_info *block)
 	if (block->t == '%' && block->m == 1)
 		block->z = 0;
 	if (block->m == 1)
-		result += (toprint);
+		result += ft_putchar(toprint);
 	result += ft_char_width(block->w, 1, block->z);
-	if (!block->m)
+	if (block->m == 0)
 		result += ft_putchar(toprint);
 	return (result);
 }

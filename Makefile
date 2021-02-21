@@ -6,7 +6,7 @@
 #    By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/25 12:05:05 by jealee            #+#    #+#              #
-#    Updated: 2021/02/19 00:13:50 by jealee           ###   ########.fr        #
+#    Updated: 2021/02/21 20:58:38 by jealee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ LIBFTL	    = libft.a
 
 #ft_printf relevant sources
 SRCS		= ft_printf.c \
-			  ft_utils.c
+			  ft_utils.c \
+			  ft_print_char.c
 OBJS		= $(SRCS:.c=.o)
 
 #ft_printf header dir

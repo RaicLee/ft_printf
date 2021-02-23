@@ -6,11 +6,29 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 14:51:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/23 16:27:15 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/23 23:06:09 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+char	*ft_string_join(char *s1, char *s2)
+{
+	int		s1len;
+	int		s2len;
+	char	*result;
+
+	s1len = ft_strlen(s1);
+	s2len = ft_strlen(s2);
+	result = (char*)malloc(sizeof(char) * (s1len + s2len + 1));
+	if (!result)
+		return (NULL);
+	ft_strlcpy(result, s1, s1len);
+	ft_strlcat(result, s2, s2len);
+	free(s1);
+	free(s2);
+	return (result);
+}
 
 char	*ft_buf_alloc(char *s, int end, int len)
 {
@@ -57,9 +75,9 @@ int		ft_string_width(char **buf, t_info *block)
 	}
 	w[i] = '\0';
 	if (!block->m)
-		*buf = ft_strjoin(w, *buf, 3);
+		*buf = ft_string_join(w, *buf);
 	else
-		*buf = ft_strjoin(*buf, w, 3);
+		*buf = ft_string_join(*buf, w);
 	return (block->w);
 }
 
@@ -78,4 +96,5 @@ int		ft_print_string(char *s, t_info *block)
 	ft_putstr(buffer);
 	if (buffer)
 		free(buffer);
+	return (result);
 }

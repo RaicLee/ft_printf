@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/22 00:09:31 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/23 16:33:57 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int		ft_print_block(va_list ap, t_info *block)
 	type = block->t;
 	if (type == 'c')
 		result = ft_print_char(va_arg(ap, int), block);
-	else if (type == '%')
+	if (type == '%')
 		result = ft_print_char('%', block);
-	else if (type == 'd' || type == 'i')
-		result = ft_print_number(va_arg(ap, int), block);
+	if (type == 's')
+		result = ft_print_string(va_arg(ap, char *), block);
 	return (result);
 }
 
@@ -33,9 +33,9 @@ void	check_width_and_prec(va_list ap, char *format, t_info *block, int i)
 	if (ft_isdigit(format[i]))
 	{
 		if (block->p == -1)
-			block->w = block->w * 10 + ft_chartoint(format[i]);
+			block->w = block->w * 10 + format[i] - '0';
 		else
-			block->p = block->p * 10 + ft_chartoint(format[i]);
+			block->p = block->p * 10 + format[i] - '0';
 	}
 	else if (format[i] == '*')
 	{

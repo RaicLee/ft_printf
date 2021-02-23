@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 16:18:52 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/23 14:57:37 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/23 16:30:06 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,10 @@ int		ft_putchar(char ch)
 {
 	return (write(1, &ch, sizeof(char)));
 }
+
 int		ft_putstr(char *s)
 {
 	if (s)
 		return (write(1, s, ft_strlen(s)));
 	return (0);
-}
-int		ft_chartoint(char ch)
-{
-	return (ch - '0');
 }

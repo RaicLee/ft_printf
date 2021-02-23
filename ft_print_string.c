@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_print_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 16:18:52 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/23 14:57:37 by jealee           ###   ########.fr       */
+/*   Created: 2021/02/23 14:51:37 by jealee            #+#    #+#             */
+/*   Updated: 2021/02/23 14:54:18 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	block_initialize(t_info *block)
+int	ft_print_string(char *s, t_info *block)
 {
-	block->m = 0;
-	block->z = 0;
-	block->w = 0;
-	block->p = -1;
-	block->t = 0;
-	block->b = 10;
-	block->s = 1;
-}
+	int		result;
+	char	*buffer;
 
-int		ft_putchar(char ch)
-{
-	return (write(1, &ch, sizeof(char)));
-}
-int		ft_putstr(char *s)
-{
-	if (s)
-		return (write(1, s, ft_strlen(s)));
-	return (0);
-}
-int		ft_chartoint(char ch)
-{
-	return (ch - '0');
+	result = 0;
+	if (!s)
+		s = "(null)";
+	if (block->p == -1 || ((size_t)block->p > ft_strlen(s)))
+		block->p = ft_strlen(s);
+	buffer = 
+
 }

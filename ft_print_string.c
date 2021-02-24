@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 14:51:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/23 23:40:46 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/24 11:23:58 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ int		ft_string_width(char **buf, t_info *block)
 	int		i;
 	int		len;
 
-	if (!buf)
-		return (0);
 	len = (int)ft_strlen(*buf);
 	if (block->w <= len)
 		return (len);

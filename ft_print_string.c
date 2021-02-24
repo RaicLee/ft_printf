@@ -6,11 +6,12 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 14:51:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/23 23:06:09 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/23 23:40:46 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 char	*ft_string_join(char *s1, char *s2)
 {
@@ -23,8 +24,8 @@ char	*ft_string_join(char *s1, char *s2)
 	result = (char*)malloc(sizeof(char) * (s1len + s2len + 1));
 	if (!result)
 		return (NULL);
-	ft_strlcpy(result, s1, s1len);
-	ft_strlcat(result, s2, s2len);
+	ft_strlcpy(result, s1, s1len + s2len + 1);
+	ft_strlcat(result, s2, s2len + s2len + 1);
 	free(s1);
 	free(s2);
 	return (result);
@@ -94,7 +95,6 @@ int		ft_print_string(char *s, t_info *block)
 	buffer = ft_buf_alloc(s, block->p, ft_strlen(s));
 	result = ft_string_width(&buffer, block);
 	ft_putstr(buffer);
-	if (buffer)
-		free(buffer);
+	free(buffer);
 	return (result);
 }

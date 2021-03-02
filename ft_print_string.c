@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 14:51:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/02 20:08:41 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/02 20:37:27 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_string_join(char *s1, char *s2)
 	result = (char*)malloc(sizeof(char) * (s1len + s2len + 1));
 	if (!result)
 		return (NULL);
-	ft_strlcpy(result, s1, s1len + s2len + 1);
+	ft_strlcpy(result, s1, s1len + 1);
 	ft_strlcat(result, s2, s1len + s2len + 1);
 	free(s1);
 	free(s2);
@@ -34,20 +34,13 @@ char	*ft_string_join(char *s1, char *s2)
 char	*ft_buf_alloc(char *s, int end, int len)
 {
 	char	*buf;
-	int		i;
 
-	if (end < len)
+	if (end > len)
 		end = len;
 	buf = (char *)malloc(sizeof(char) * (end + 1));
 	if (!buf)
 		return (NULL);
-	i = 0;
-	while (i < end)
-	{
-		buf[i] = s[i];
-		i++;
-	}
-	buf[i] = '\0';
+	ft_strlcpy(buf, s, end + 1);
 	return (buf);
 }
 
@@ -64,7 +57,7 @@ int		ft_string_width(char **buf, t_info *block)
 	if (!w)
 		return (0);
 	i = 0;
-	while (i < (int)block->w - len)
+	while (i < block->w - len)
 	{
 		if (block->z)
 			w[i] = '0';

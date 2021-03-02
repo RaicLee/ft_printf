@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/02 20:39:55 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/03 00:09:21 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ int		ft_print_block(va_list *ap, t_info *block)
 		result = ft_print_char('%', block);
 	if (type == 's')
 		result = ft_print_string(va_arg(*ap, char *), block);
+	if (type == 'd' || type == 'i')
+		result = ft_print_number(va_arg(*ap, int), block);
+	if (type == 'x' || type == 'X' || type == 'u')
+		result = ft_print_number(va_arg(*ap, unsigned int), block);
+	if (type == 'p')
+		result = ft_print_number(va_arg(*ap, unsigned long long), block);
 	return (result);
 }
 
@@ -82,7 +88,7 @@ int		ft_printformat(va_list *ap, char *format)
 		if (format[i] == '%')
 		{
 			block_initialize(block);
-			while (format[++i] && !ft_strchr(TYPE, format[i]))
+			while (format[++i] && !ft_strchr("csdiupxX%", format[i]))
 				append_block_info(ap, format, block, i);
 			block->t = format[i++];
 			if ((block->m == 1 || block->p > -1) && block->t != '%')

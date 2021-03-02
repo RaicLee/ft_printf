@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:13:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/02 17:57:13 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/02 22:53:20 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,6 @@ int				ft_print_string(char *s, t_info *block);
 char			*ft_string_join(char *s1, char *s2);
 char			*ft_buf_alloc(char *s, int end, int len);
 int				ft_string_width(char **buf, t_info *block);
+
+int				ft_print_number(unsigned long long number, t_info *block);
 #endif

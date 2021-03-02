@@ -6,13 +6,11 @@
 #    By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/25 12:05:05 by jealee            #+#    #+#              #
-#    Updated: 2021/02/23 23:09:26 by jealee           ###   ########.fr        #
+#    Updated: 2021/03/02 21:45:00 by jealee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#ft_printf
 NAME		= libftprintf.a
-#libft
 LIBFT		= libft
 LIBFTL	    = libft.a
 
@@ -20,19 +18,15 @@ LIBFTL	    = libft.a
 SRCS		= ft_printf.c \
 			  ft_utils.c \
 			  ft_print_char.c \
-			  ft_print_string.c
+			  ft_print_string.c \
+			  ft_print_number.c
 OBJS		= $(SRCS:.c=.o)
 
-#ft_printf header dir
 INCS		= .
-
-#remove
 RM			= rm -rf
 
-#compile
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -c
-#archive
 AR			= ar
 ARFLAGS     = crs
 

@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 23:20:43 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/21 21:14:10 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/02 17:14:47 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_print_char(int toprint, t_info *block)
 {
 	int	result;
-
+	
 	result = 0;
 	if (block->t == '%' && block->m == 1)
 		block->z = 0;

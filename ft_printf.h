@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:13:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/02 16:16:50 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/02 17:57:13 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ typedef	struct	s_info
 }				t_info;
 
 int				ft_printf(const char *format, ...);
-int				ft_printformat(va_list ap, char *format);
-int				ft_print_block(va_list ap, t_info *block);
-void			check_width_and_prec(va_list ap, char *f, t_info *b, int i);
-void			append_block_info(va_list ap, char *f, t_info *b, int i);
+int				ft_printformat(va_list *ap, char *format);
+int				ft_print_block(va_list *ap, t_info *block);
+void			check_width_and_prec(va_list *ap, char *f, t_info *b, int i);
+void			append_block_info(va_list *ap, char *f, t_info *b, int i);
 
 void			block_initialize(t_info	*block);
 int				ft_putchar(char ch);

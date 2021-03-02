@@ -6,13 +6,13 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/02 16:44:05 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/02 17:57:35 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_block(va_list ap, t_info *block)
+int		ft_print_block(va_list *ap, t_info *block)
 {
 	int		result;
 	char	type;
@@ -20,15 +20,15 @@ int		ft_print_block(va_list ap, t_info *block)
 	result = 0;
 	type = block->t;
 	if (type == 'c')
-		result = ft_print_char(va_arg(ap, int), block);
-	else if (type == '%')
+		result = ft_print_char(va_arg(*ap, int), block);
+	if (type == '%')
 		result = ft_print_char('%',block);
-	else if (type == 's')
-		result = ft_print_string(va_arg(ap, char *),block);
+	if (type == 's')
+		result = ft_print_string(va_arg(*ap, char *),block);
 	return (result);
 }
 
-void	check_width_and_prec(va_list ap, char *format, t_info *block, int i)
+void	check_width_and_prec(va_list *ap, char *format, t_info *block, int i)
 {
 	if (ft_isdigit(format[i]))
 	{
@@ -41,7 +41,7 @@ void	check_width_and_prec(va_list ap, char *format, t_info *block, int i)
 	{
 		if (block->p == -1)
 		{
-			block->w = va_arg(ap, int);
+			block->w = va_arg(*ap, int);
 			if (block->w < 0)
 			{
 				block->m = 1;
@@ -49,11 +49,11 @@ void	check_width_and_prec(va_list ap, char *format, t_info *block, int i)
 			}
 		}
 		else
-			block->p = va_arg(ap, int);
+			block->p = va_arg(*ap, int);
 	}
 }
 
-void	append_block_info(va_list ap, char *format, t_info *block, int i)
+void	append_block_info(va_list *ap, char *format, t_info *block, int i)
 {
 	if (format[i] == '0' && block->w == 0 && block->p == -1)
 		block->z = 1;
@@ -65,7 +65,7 @@ void	append_block_info(va_list ap, char *format, t_info *block, int i)
 		check_width_and_prec(ap, format, block, i);
 }
 
-int		ft_printformat(va_list ap, char *format)
+int		ft_printformat(va_list *ap, char *format)
 {
 	int		i;
 	int		result;
@@ -100,7 +100,7 @@ int		ft_printf(const char *format, ...)
 	va_list	ap;
 
 	va_start(ap, format);
-	result = ft_printformat(ap, (char*)format);
+	result = ft_printformat(&ap, (char*)format);
 	va_end(ap);
 	return (result);
 }

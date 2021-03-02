@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 14:51:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/02/24 11:23:58 by jealee           ###   ########.fr       */
+/*   Updated: 2021/02/24 13:11:23 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ char	*ft_string_join(char *s1, char *s2)
 
 char	*ft_buf_alloc(char *s, int end, int len)
 {
-	int		i;
 	char	*buf;
 
 	if (end < len)
@@ -41,13 +40,7 @@ char	*ft_buf_alloc(char *s, int end, int len)
 	buf = (char *)malloc(sizeof(char) * (end + 1));
 	if (!buf)
 		return (NULL);
-	i = 0;
-	while (i < end)
-	{
-		buf[i] = s[i];
-		i++;
-	}
-	buf[i] = '\0';
+	ft_strlcpy(buf, s, end + 1);
 	return (buf);
 }
 

@@ -6,14 +6,14 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 14:51:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/02 20:37:27 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/03 23:48:22 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-char	*ft_string_join(char *s1, char *s2)
+char	*ft_join(char *s1, char *s2,int option)
 {
 	int		s1len;
 	int		s2len;
@@ -26,8 +26,10 @@ char	*ft_string_join(char *s1, char *s2)
 		return (NULL);
 	ft_strlcpy(result, s1, s1len + 1);
 	ft_strlcat(result, s2, s1len + s2len + 1);
-	free(s1);
-	free(s2);
+	if (option == 1 || option == 3)
+		free(s1);
+	if (option == 2 || option == 3)
+		free(s2);
 	return (result);
 }
 
@@ -67,9 +69,9 @@ int		ft_string_width(char **buf, t_info *block)
 	}
 	w[i] = '\0';
 	if (!block->m)
-		*buf = ft_string_join(w, *buf);
+		*buf = ft_join(w, *buf, 3);
 	else
-		*buf = ft_string_join(*buf, w);
+		*buf = ft_join(*buf, w, 3);
 	return (block->w);
 }
 

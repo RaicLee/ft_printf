@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:13:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/03 22:51:48 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/03 23:47:23 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int				ft_print_char(int c, t_info *block);
 int				ft_char_width(int width, int len, int zero);
 
 int				ft_print_string(char *s, t_info *block);
-char			*ft_string_join(char *s1, char *s2);
+char			*ft_join(char *s1, char *s2, int option);
 char			*ft_buf_alloc(char *s, int end, int len);
 int				ft_string_width(char **buf, t_info *block);
 

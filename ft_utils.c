@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 16:18:52 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/03 00:11:18 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/03 22:53:43 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		ft_getnumlen(unsigned long long nbr, t_info *block)
 	i = 0;
 	while (nbr)
 	{
-		nbr/=block->b;
+		nbr = nbr / block->b;
 		i++;
 	}
 	return (i);
@@ -60,4 +60,3 @@ char	*ft_getbase(char t)
 		return ("0123456789ABCDEF");
 	return (NULL);
 }
-

@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 21:44:00 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/03 00:16:26 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/03 23:52:15 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	ft_print_number(unsigned long long number, t_info *block)
 {
 	int		len;
 	char	*buffer;
+	int		result;
 
 	if (block->t == 'x' || block->t == 'X' || block->t == 'p')
 		block->b = 16;
@@ -46,5 +47,5 @@ int	ft_print_number(unsigned long long number, t_info *block)
 	len += ft_add_minustr(block, &buffer);
 	if (block->t == 'p')
 		len += ft_add_0x(&buffer);
-
+	return (result);
 }

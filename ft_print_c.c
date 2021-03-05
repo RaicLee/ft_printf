@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_print_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/20 23:20:43 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/02 20:39:27 by jealee           ###   ########.fr       */
+/*   Created: 2021/03/05 19:29:48 by jealee            #+#    #+#             */
+/*   Updated: 2021/03/05 19:34:46 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_char(int toprint, t_info *block)
+int	ft_print_c(int toprint, t_info *block)
 {
 	int	result;
 
@@ -21,13 +21,13 @@ int	ft_print_char(int toprint, t_info *block)
 		block->z = 0;
 	if (block->m == 1)
 		result += ft_putchar(toprint);
-	result += ft_char_width(block->w, 1, block->z);
+	result += ft_c_width(block->w, 1, block->z);
 	if (block->m == 0)
 		result += ft_putchar(toprint);
 	return (result);
 }
 
-int	ft_char_width(int width, int len, int zero)
+int	ft_c_width(int width, int len, int zero)
 {
 	int result;
 

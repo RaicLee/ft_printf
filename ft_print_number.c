@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 21:44:00 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 17:41:33 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/05 19:35:12 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	ft_print_number(unsigned long long number, t_info *block)
 	len += ft_add_minustr(block, &buffer);
 	if (block->t == 'p')
 		len += ft_add_0x(&buffer);
-	result = ft_string_width(&buffer, block);
+	result = ft_s_width(&buffer, block);
 	result += ft_add_minustr2(len, block, &buffer);
 	ft_putstr(buffer);
 	free(buffer);

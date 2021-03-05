@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_string.c                                  :+:      :+:    :+:   */
+/*   ft_print_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 14:51:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 17:41:56 by jealee           ###   ########.fr       */
+/*   Created: 2021/03/05 19:30:13 by jealee            #+#    #+#             */
+/*   Updated: 2021/03/05 19:34:59 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_buf_alloc(char *s, int end, int len)
 	return (buf);
 }
 
-int		ft_string_width(char **buf, t_info *block)
+int		ft_s_width(char **buf, t_info *block)
 {
 	char	*w;
 	int		i;
@@ -74,7 +74,7 @@ int		ft_string_width(char **buf, t_info *block)
 	return (block->w);
 }
 
-int		ft_print_string(char *s, t_info *block)
+int		ft_print_s(char *s, t_info *block)
 {
 	int		result;
 	char	*buffer;
@@ -85,7 +85,7 @@ int		ft_print_string(char *s, t_info *block)
 	if (block->p == -1 || ((size_t)block->p > ft_strlen(s)))
 		block->p = ft_strlen(s);
 	buffer = ft_buf_alloc(s, block->p, ft_strlen(s));
-	result = ft_string_width(&buffer, block);
+	result = ft_s_width(&buffer, block);
 	ft_putstr(buffer);
 	free(buffer);
 	return (result);

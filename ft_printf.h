@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:13:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 17:42:25 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/05 19:33:29 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int				ft_putstr(char *s);
 int				ft_getnumlen(unsigned long long number, t_info *block);
 char			*ft_getbase(char type);
 
-int				ft_print_char(int c, t_info *block);
-int				ft_char_width(int width, int len, int zero);
+int				ft_print_c(int c, t_info *block);
+int				ft_c_width(int width, int len, int zero);
 
-int				ft_print_string(char *s, t_info *block);
+int				ft_print_s(char *s, t_info *block);
 char			*ft_join(char *s1, char *s2, int option);
 char			*ft_buf_alloc(char *s, int end, int len);
-int				ft_string_width(char **buf, t_info *block);
+int				ft_s_width(char **buf, t_info *block);
 
 int				ft_print_number(unsigned long long number, t_info *block);
 int				ft_add_minustr(t_info *block, char **buffer);

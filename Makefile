@@ -6,7 +6,7 @@
 #    By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/25 12:05:05 by jealee            #+#    #+#              #
-#    Updated: 2021/03/02 21:45:00 by jealee           ###   ########.fr        #
+#    Updated: 2021/03/05 19:30:49 by jealee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ LIBFTL	    = libft.a
 #ft_printf relevant sources
 SRCS		= ft_printf.c \
 			  ft_utils.c \
-			  ft_print_char.c \
-			  ft_print_string.c \
+			  ft_print_c.c \
+			  ft_print_s.c \
 			  ft_print_number.c
 OBJS		= $(SRCS:.c=.o)
 

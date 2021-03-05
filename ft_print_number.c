@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 21:44:00 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/03 23:52:15 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/05 15:29:17 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,72 @@
 
 int	ft_get_numstr(unsigned long long number, t_info *block, char **buf)
 {
+	int	len;
+	int	result;
+	int	i;
 
+	len = ft_getnumlen(number, block);
+	if (block->p > len)
+		result = block->p;
+	else
+		result = len;
+	*buf = (char *)malloc(sizeof(char) * (result + 1));
+	if (!(*buf))
+		return (0);
+	i = 0;
+	while (len + i < result)
+	{
+		(*buf)[i] = '0';
+		i++;
+	}
+	(*buf)[result] = '\0';
+	i = 1;
+	if (number == 0 && block->p != 0)
+		(*buf)[result - i] = '0';
+	while (number)
+	{
+		(*buf)[result - i] = ft_getbase(block->t)[number % block->b];
+		number /= block->b;
+		i++;
+	}
+	return (len);
 }
 
 int	ft_add_minustr(t_info *block, char **buf)
 {
+	int	result;
 
+	result = 0;
+	if ((block->t == 'i' || block->t == 'd') && block->z == 0 && block->s == -1)
+	{
+		*buf = ft_join("-",*buf,2);
+		result = 1;
+  	}
+ 	return (result);
+}
+
+int	ft_add_minustr2(int len, t_info *block, char **buf)
+{
+	int		result;
+
+	result = 0;
+	if (block->s == -1 && block->z == 1)
+	{
+		if (len >= block->w)
+		{
+			*buf = ft_join("-", *buf, 2);
+			result++;
+		}
+		else
+			*buf[0] = '-';
+	}
+	return (result);
 }
 
 int	ft_add_0x(char **buf)
 {
-
+	*buf = ft_join("0x",*buf, 2);
+	return (2);
 }
 
 int	ft_print_number(unsigned long long number, t_info *block)
@@ -47,5 +102,9 @@ int	ft_print_number(unsigned long long number, t_info *block)
 	len += ft_add_minustr(block, &buffer);
 	if (block->t == 'p')
 		len += ft_add_0x(&buffer);
+	result = ft_string_width(&buffer, block);
+	result += ft_add_minustr2(len, block, &buffer);
+	ft_putstr(buffer);
+	free(buffer);
 	return (result);
 }

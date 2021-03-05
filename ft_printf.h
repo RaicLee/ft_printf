@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:13:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/03 23:47:23 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/05 15:27:39 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void			append_block_info(va_list *ap, char *f, t_info *b, int i);
 void			block_initialize(t_info	*block);
 int				ft_putchar(char ch);
 int				ft_putstr(char *s);
+int				ft_getnumlen(unsigned long long number, t_info *block);
+char			*ft_getbase(char type);
 
 int				ft_print_char(int c, t_info *block);
 int				ft_char_width(int width, int len, int zero);
@@ -47,5 +49,8 @@ char			*ft_buf_alloc(char *s, int end, int len);
 int				ft_string_width(char **buf, t_info *block);
 
 int				ft_print_number(unsigned long long number, t_info *block);
-
+int				ft_add_minustr(t_info *block, char **buffer);
+int				ft_add_minustr2(int len, t_info *block, char **buffer);
+int				ft_add0x(char **buf);
+int				ft_get_numstr(unsigned long long number, t_info *block, char **buf);
 #endif

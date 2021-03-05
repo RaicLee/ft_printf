@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 21:44:00 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 15:29:17 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/05 17:41:33 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ int	ft_get_numstr(unsigned long long number, t_info *block, char **buf)
 	i = 0;
 	while (len + i < result)
 	{
-		(*buf)[i] = '0';
-		i++;
+		(*buf)[i++] = '0';
 	}
 	(*buf)[result] = '\0';
 	i = 1;
@@ -52,10 +51,10 @@ int	ft_add_minustr(t_info *block, char **buf)
 	result = 0;
 	if ((block->t == 'i' || block->t == 'd') && block->z == 0 && block->s == -1)
 	{
-		*buf = ft_join("-",*buf,2);
+		*buf = ft_join("-", *buf, 2);
 		result = 1;
-  	}
- 	return (result);
+	}
+	return (result);
 }
 
 int	ft_add_minustr2(int len, t_info *block, char **buf)
@@ -78,7 +77,7 @@ int	ft_add_minustr2(int len, t_info *block, char **buf)
 
 int	ft_add_0x(char **buf)
 {
-	*buf = ft_join("0x",*buf, 2);
+	*buf = ft_join("0x", *buf, 2);
 	return (2);
 }
 
@@ -98,7 +97,7 @@ int	ft_print_number(unsigned long long number, t_info *block)
 			block->s = -1;
 		}
 	}
-	len =  ft_get_numstr(number, block, &buffer);
+	len = ft_get_numstr(number, block, &buffer);
 	len += ft_add_minustr(block, &buffer);
 	if (block->t == 'p')
 		len += ft_add_0x(&buffer);

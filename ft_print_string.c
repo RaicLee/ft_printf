@@ -6,13 +6,13 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 14:51:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/04 19:36:02 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/05 17:41:56 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_join(char *s1, char *s2,int option)
+char	*ft_join(char *s1, char *s2, int option)
 {
 	int		s1len;
 	int		s2len;

@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/03 00:09:21 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/05 19:18:47 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		ft_printformat(va_list *ap, char *format)
 	result = 0;
 	if (!(block = (t_info*)malloc(sizeof(t_info))))
 		return (-1);
-	while (format[i] != '\0')
+	while (format[i])
 	{
 		while (format[i] != '%' && format[i] != '\0')
 			result += ft_putchar(format[i++]);

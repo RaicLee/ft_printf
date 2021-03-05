@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 16:18:52 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 21:42:02 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/05 22:07:27 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ char	*ft_getbase(char t)
 
 int		ft_add0x(char **buf)
 {
-	*buf = ft_join("0x",*buf,2);
+	*buf = ft_join("0x", *buf, 2);
 	return (2);
 }

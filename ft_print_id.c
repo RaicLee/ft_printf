@@ -6,13 +6,13 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:24:02 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 21:44:21 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/05 22:09:36 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_getnumlen_id(unsigned int nbr, t_info *block)
+int	ft_getnumlen_id(unsigned int nbr, t_info *block)
 {
 	int	i;
 
@@ -68,6 +68,7 @@ int	ft_add_minus_id(t_info *block, char **buf)
 	}
 	return (result);
 }
+
 int	ft_add_minus_id2(int len, t_info *block, char **buf)
 {
 	int		result;
@@ -86,7 +87,7 @@ int	ft_add_minus_id2(int len, t_info *block, char **buf)
 	return (result);
 }
 
-int	ft_print_id(int  num, t_info *block)
+int	ft_print_id(int num, t_info *block)
 {
 	int				len;
 	char			*buffer;

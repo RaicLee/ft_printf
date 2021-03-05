@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:25:02 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 21:57:53 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/05 22:08:33 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		ft_getnumlen_p(unsigned long long nbr, t_info *block)
 	return (i);
 }
 
-int	ft_get_num_p(unsigned long long number, t_info *block, char **buf)
+int		ft_get_num_p(unsigned long long number, t_info *block, char **buf)
 {
 	int	len;
 	int	result;
@@ -56,11 +56,11 @@ int	ft_get_num_p(unsigned long long number, t_info *block, char **buf)
 	return (len);
 }
 
-int	ft_print_p(unsigned long long number, t_info *block)
+int		ft_print_p(unsigned long long number, t_info *block)
 {
-	int				len;
-	char			*buffer;
-	int				result;
+	int		len;
+	char	*buffer;
+	int		result;
 
 	block->b = 16;
 	len = ft_get_num_p(number, block, &buffer);

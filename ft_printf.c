@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 19:33:51 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/05 21:42:48 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int		ft_print_block(va_list *ap, t_info *block)
 	if (type == 's')
 		result = ft_print_s(va_arg(*ap, char *), block);
 	if (type == 'd' || type == 'i')
-		result = ft_print_number(va_arg(*ap, int), block);
+		result = ft_print_id(va_arg(*ap, int), block);
 	if (type == 'x' || type == 'X' || type == 'u')
-		result = ft_print_number(va_arg(*ap, unsigned int), block);
+		result = ft_print_ux(va_arg(*ap, unsigned int), block);
 	if (type == 'p')
-		result = ft_print_number(va_arg(*ap, unsigned long long), block);
+		result = ft_print_p(va_arg(*ap, unsigned long long), block);
 	return (result);
 }
 

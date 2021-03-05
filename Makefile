@@ -6,7 +6,7 @@
 #    By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/25 12:05:05 by jealee            #+#    #+#              #
-#    Updated: 2021/03/05 19:30:49 by jealee           ###   ########.fr        #
+#    Updated: 2021/03/05 21:42:40 by jealee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ SRCS		= ft_printf.c \
 			  ft_utils.c \
 			  ft_print_c.c \
 			  ft_print_s.c \
-			  ft_print_number.c
+			  ft_print_id.c \
+			  ft_print_ux.c \
+			  ft_print_p.c
 OBJS		= $(SRCS:.c=.o)
 
 INCS		= .

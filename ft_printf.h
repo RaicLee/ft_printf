@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:13:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 19:33:29 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/05 21:44:45 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void			append_block_info(va_list *ap, char *f, t_info *b, int i);
 void			block_initialize(t_info	*block);
 int				ft_putchar(char ch);
 int				ft_putstr(char *s);
-int				ft_getnumlen(unsigned long long number, t_info *block);
 char			*ft_getbase(char type);
+int				ft_add0x(char **buf);
 
 int				ft_print_c(int c, t_info *block);
 int				ft_c_width(int width, int len, int zero);
@@ -48,10 +48,16 @@ char			*ft_join(char *s1, char *s2, int option);
 char			*ft_buf_alloc(char *s, int end, int len);
 int				ft_s_width(char **buf, t_info *block);
 
-int				ft_print_number(unsigned long long number, t_info *block);
-int				ft_add_minustr(t_info *block, char **buffer);
-int				ft_add_minustr2(int len, t_info *block, char **buffer);
-int				ft_add0x(char **buf);
-int				ft_get_numstr(unsigned long long number,\
-		t_info *block, char **buf);
+int				ft_print_id(int number, t_info *block);
+int				ft_add_minus_id(t_info *block, char **buf);
+int				ft_get_num_id(unsigned int number, t_info *block, char **buf);
+int				ft_getnumlen_id(unsigned int number, t_info *block);
+int				ft_add_minus_id2(int len, t_info *block, char **buffer);
+
+int				ft_print_ux(unsigned int number, t_info *block);
+
+int				ft_print_p(unsigned long long number, t_info *block);
+int				ft_get_num_p(unsigned long long number, t_info *block, char **buf);
+int				ft_getnumlen_p(unsigned long long nbr, t_info *block);
+
 #endif

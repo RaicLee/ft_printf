@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/07 13:03:55 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/07 17:19:08 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		ft_print_block(va_list *ap, t_info *block)
 	int		result;
 	char	type;
 
+	if ((block->m == 1 || block->p > -1) && block->t != '%')
+		block->z = 0;
 	result = 0;
 	type = block->t;
 	if (type == 'c')
@@ -71,16 +73,14 @@ void	append_block_info(va_list *ap, char *format, t_info *block, int i)
 		ft_wp_apply(ap, format, block, i);
 }
 
-int		ft_printformat(va_list *ap, char *format)
+int		ft_printformat(va_list *ap, char *format, t_info *block)
 {
 	int		i;
 	int		result;
-	t_info	*block;
+	int		temp;
 
 	i = 0;
 	result = 0;
-	if (!(block = (t_info*)malloc(sizeof(t_info))))
-		return (-1);
 	while (format[i])
 	{
 		while (format[i] && format[i] != '%')
@@ -91,12 +91,11 @@ int		ft_printformat(va_list *ap, char *format)
 			while (format[++i] && !ft_strchr("csdiupxX%", format[i]))
 				append_block_info(ap, format, block, i);
 			block->t = format[i++];
-			if ((block->m == 1 || block->p > -1) && block->t != '%')
-				block->z = 0;
-			result += ft_print_block(ap, block);
+			if ((temp = ft_print_block(ap, block)) < 0)
+				return (-1);
+			result += temp;
 		}
 	}
-	free(block);
 	return (result);
 }
 
@@ -104,9 +103,13 @@ int		ft_printf(const char *format, ...)
 {
 	int		result;
 	va_list	ap;
+	t_info	*block;
 
+	if (!(block = (t_info*)malloc(sizeof(t_info))))
+		return (-1);
 	va_start(ap, format);
-	result = ft_printformat(&ap, (char*)format);
+	result = ft_printformat(&ap, (char*)format, block);
 	va_end(ap);
+	free(block);
 	return (result);
 }

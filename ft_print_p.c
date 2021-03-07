@@ -6,11 +6,17 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:25:02 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 22:08:33 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/07 13:43:16 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		ft_add0x(char **buf)
+{
+	*buf = ft_join("0x", *buf, 2);
+	return (2);
+}
 
 int		ft_getnumlen_p(unsigned long long nbr, t_info *block)
 {

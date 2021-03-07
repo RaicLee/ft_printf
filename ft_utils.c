@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 16:18:52 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 22:07:27 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/07 13:43:27 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,4 @@ char	*ft_getbase(char t)
 	if (t == 'X')
 		return ("0123456789ABCDEF");
 	return (NULL);
-}
-
-int		ft_add0x(char **buf)
-{
-	*buf = ft_join("0x", *buf, 2);
-	return (2);
 }

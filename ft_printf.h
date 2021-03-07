@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:13:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 22:07:56 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/07 13:43:42 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,13 @@ typedef	struct	s_info
 int				ft_printf(const char *format, ...);
 int				ft_printformat(va_list *ap, char *format);
 int				ft_print_block(va_list *ap, t_info *block);
-void			check_width_and_prec(va_list *ap, char *f, t_info *b, int i);
+void			ft_wp_apply(va_list *ap, char *f, t_info *b, int i);
 void			append_block_info(va_list *ap, char *f, t_info *b, int i);
 
 void			block_initialize(t_info	*block);
 int				ft_putchar(char ch);
 int				ft_putstr(char *s);
 char			*ft_getbase(char type);
-int				ft_add0x(char **buf);
 
 int				ft_print_c(int c, t_info *block);
 int				ft_c_width(int width, int len, int zero);
@@ -60,5 +59,6 @@ int				ft_print_p(unsigned long long number, t_info *block);
 int				ft_get_num_p(unsigned long long number,\
 		t_info *block, char **buf);
 int				ft_getnumlen_p(unsigned long long nbr, t_info *block);
+int				ft_add0x(char **buf);
 
 #endif

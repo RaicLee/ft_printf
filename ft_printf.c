@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/07 12:49:57 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/07 13:03:55 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		ft_print_block(va_list *ap, t_info *block)
 	return (result);
 }
 
-void	check_width_and_prec(va_list *ap, char *format, t_info *block, int i)
+void	ft_wp_apply(va_list *ap, char *format, t_info *block, int i)
 {
 	if (ft_isdigit(format[i]))
 	{
@@ -68,7 +68,7 @@ void	append_block_info(va_list *ap, char *format, t_info *block, int i)
 	else if (format[i] == '.')
 		block->p = 0;
 	else if (ft_isdigit(format[i]) || format[i] == '*')
-		check_width_and_prec(ap, format, block, i);
+		ft_wp_apply(ap, format, block, i);
 }
 
 int		ft_printformat(va_list *ap, char *format)

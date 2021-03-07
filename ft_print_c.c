@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:29:48 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 19:34:46 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/07 14:06:59 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,18 @@ int	ft_print_c(int toprint, t_info *block)
 		block->z = 0;
 	if (block->m == 1)
 		result += ft_putchar(toprint);
-	result += ft_c_width(block->w, 1, block->z);
+	result += ft_c_width(block->w, block->z);
 	if (block->m == 0)
 		result += ft_putchar(toprint);
 	return (result);
 }
 
-int	ft_c_width(int width, int len, int zero)
+int	ft_c_width(int width, int zero)
 {
 	int result;
+	int	len;
 
+	len = 1;
 	result = 0;
 	while (len < width)
 	{

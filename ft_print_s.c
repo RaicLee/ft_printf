@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:30:13 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 19:34:59 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/07 17:31:24 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,23 @@ int		ft_s_width(char **buf, t_info *block)
 	len = (int)ft_strlen(*buf);
 	if (block->w <= len)
 		return (len);
-	w = (char*)malloc(sizeof(char) * (block->w - len + 1));
-	if (!w)
-		return (0);
+	if (!(w = (char*)malloc(sizeof(char) * (block->w - len + 1))))
+		return (-1);
 	i = 0;
 	while (i < block->w - len)
 	{
 		if (block->z)
-			w[i] = '0';
+			w[i++] = '0';
 		else
-			w[i] = ' ';
-		i++;
+			w[i++] = ' ';
 	}
 	w[i] = '\0';
 	if (!block->m)
 		*buf = ft_join(w, *buf, 3);
 	else
 		*buf = ft_join(*buf, w, 3);
+	if (*buf == NULL)
+		return (-1);
 	return (block->w);
 }
 
@@ -85,7 +85,14 @@ int		ft_print_s(char *s, t_info *block)
 	if (block->p == -1 || ((size_t)block->p > ft_strlen(s)))
 		block->p = ft_strlen(s);
 	buffer = ft_buf_alloc(s, block->p, ft_strlen(s));
+	if (!buffer)
+		return (-1);
 	result = ft_s_width(&buffer, block);
+	if (result == -1)
+	{
+		free(buffer);
+		return (result);
+	}
 	ft_putstr(buffer);
 	free(buffer);
 	return (result);

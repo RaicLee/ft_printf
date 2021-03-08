@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:25:02 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/08 18:58:32 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/08 22:18:40 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,15 @@ int		ft_print_p(unsigned long long number, t_info *block)
 		return (-1);
 	len += temp;
 	if ((result = ft_s_width(&buffer, block)) < 0)
+	{
+		if (buffer)
+			free(buffer);
 		return (-1);
+	}
 	if ((len = ft_add_minus_id2(len, block, &buffer)) < 0)
 		return (-1);
 	result += len;
-	if (buffer)
-	{
-		ft_putstr(buffer);
-		free(buffer);
-	}
+	ft_putstr(buffer);
+	free(buffer);
 	return (result);
 }

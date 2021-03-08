@@ -6,7 +6,7 @@
 #    By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/25 12:05:05 by jealee            #+#    #+#              #
-#    Updated: 2021/03/05 21:42:40 by jealee           ###   ########.fr        #
+#    Updated: 2021/03/08 22:22:58 by jealee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME		= libftprintf.a
 LIBFT		= libft
 LIBFTL	    = libft.a
 
-#ft_printf relevant sources
 SRCS		= ft_printf.c \
 			  ft_utils.c \
 			  ft_print_c.c \

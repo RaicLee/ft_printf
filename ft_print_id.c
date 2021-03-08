@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:24:02 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/08 19:01:42 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/08 22:16:06 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_get_num_id(unsigned int number, t_info *block, char **buf)
 	else
 		result = len;
 	if (!(*buf = (char *)malloc(sizeof(char) * (result + 1))))
-		return (0);
+		return (-1);
 	i = 0;
 	while (len + i < result)
 		(*buf)[i++] = '0';
@@ -93,27 +93,28 @@ int	ft_add_minus_id2(int len, t_info *block, char **buf)
 
 int	ft_print_id(int num, t_info *block)
 {
-	int				len;
 	char			*buffer;
 	int				result;
 	unsigned int	number;
 	int				temp;
 
+	number = (num < 0) ? -num : num;
 	if (num < 0)
-	{
-		number = -num;
 		block->s = -1;
-	}
-	else
-		number = num;
-	if ((len = ft_get_num_id(number, block, &buffer)) < 0)
+	if ((temp = ft_get_num_id(number, block, &buffer)) < 0)
 		return (-1);
-	if ((temp = ft_add_minus_id(block, &buffer)) < 0)
+	if ((result = ft_add_minus_id(block, &buffer)) < 0)
 		return (-1);
-	len += temp;
+	temp += result;
 	if ((result = ft_s_width(&buffer, block)) < 0)
+	{
+		if (buffer)
+			free(buffer);
 		return (-1);
-	result += ft_add_minus_id2(len, block, &buffer);
+	}
+	if ((temp = ft_add_minus_id2(temp, block, &buffer)) < 0)
+		return (-1);
+	result += temp;
 	ft_putstr(buffer);
 	free(buffer);
 	return (result);

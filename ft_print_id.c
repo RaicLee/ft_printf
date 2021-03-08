@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:24:02 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/05 22:09:36 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/08 18:11:35 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ int	ft_add_minus_id(t_info *block, char **buf)
 	if (block->z == 0 && block->s == -1)
 	{
 		*buf = ft_join("-", *buf, 2);
-		result = 1;
+		if (*buf == NULL)
+			return (-1);
+		result++;
 	}
 	return (result);
 }
@@ -79,6 +81,8 @@ int	ft_add_minus_id2(int len, t_info *block, char **buf)
 		if (len >= block->w)
 		{
 			*buf = ft_join("-", *buf, 2);
+			if (*buf == NULL)
+				return (-1);
 			result++;
 		}
 		else

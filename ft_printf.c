@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:08:26 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/07 21:06:48 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/08 18:02:54 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,13 @@ int		ft_printformat(va_list *ap, char *format, t_info *block)
 			block_initialize(block);
 			while (format[++i] && !ft_strchr("csdiupxX%", format[i]))
 				append_block_info(ap, format, block, i);
-			if (format[i] != '\0')
+			if (format[i])
+			{
 				block->t = format[i++];
-			if ((temp = ft_print_block(ap, block)) < 0)
-				return (-1);
-			result += temp;
+				if ((temp = ft_print_block(ap, block)) < 0)
+					return (-1);
+				result += temp;
+			}
 		}
 	}
 	return (result);

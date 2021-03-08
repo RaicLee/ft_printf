@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:25:02 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/07 13:43:16 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/08 18:09:25 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int		ft_add0x(char **buf)
 {
 	*buf = ft_join("0x", *buf, 2);
+	if (*buf == NULL)
+		return (-1);
 	return (2);
 }
 
@@ -45,7 +47,7 @@ int		ft_get_num_p(unsigned long long number, t_info *block, char **buf)
 	else
 		result = len;
 	if (!(*buf = (char *)malloc(sizeof(char) * (result + 1))))
-		return (0);
+		return (-1);
 	i = 0;
 	while (len + i < result)
 		(*buf)[i++] = '0';
@@ -67,12 +69,23 @@ int		ft_print_p(unsigned long long number, t_info *block)
 	int		len;
 	char	*buffer;
 	int		result;
+	int		temp;
 
 	block->b = 16;
 	len = ft_get_num_p(number, block, &buffer);
-	len += ft_add0x(&buffer);
+	if (len < 0)
+		return (-1);
+	temp = ft_add0x(&buffer);
+	if (temp < 0)
+		return (-1);
+	len += temp;
 	result = ft_s_width(&buffer, block);
-	result += ft_add_minus_id2(len, block, &buffer);
+	if (result < 0)
+		return (-1);
+	len = ft_add_minus_id2(len, block, &buffer);
+	if (len < 0)
+		return (-1);
+	result += len;
 	ft_putstr(buffer);
 	free(buffer);
 	return (result);

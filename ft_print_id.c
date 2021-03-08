@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:24:02 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/08 18:11:35 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/08 19:01:42 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	ft_print_id(int num, t_info *block)
 	char			*buffer;
 	int				result;
 	unsigned int	number;
+	int				temp;
 
 	if (num < 0)
 	{
@@ -105,9 +106,13 @@ int	ft_print_id(int num, t_info *block)
 	}
 	else
 		number = num;
-	len = ft_get_num_id(number, block, &buffer);
-	len += ft_add_minus_id(block, &buffer);
-	result = ft_s_width(&buffer, block);
+	if ((len = ft_get_num_id(number, block, &buffer)) < 0)
+		return (-1);
+	if ((temp = ft_add_minus_id(block, &buffer)) < 0)
+		return (-1);
+	len += temp;
+	if ((result = ft_s_width(&buffer, block)) < 0)
+		return (-1);
 	result += ft_add_minus_id2(len, block, &buffer);
 	ft_putstr(buffer);
 	free(buffer);

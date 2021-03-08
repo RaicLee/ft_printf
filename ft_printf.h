@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 12:13:37 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/07 17:18:01 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/09 00:35:51 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int				ft_print_id(int number, t_info *block);
 int				ft_add_minus_id(t_info *block, char **buf);
 int				ft_get_num_id(unsigned int number, t_info *block, char **buf);
 int				ft_getnumlen_id(unsigned int number, t_info *block);
-int				ft_add_minus_id2(int len, t_info *block, char **buffer);
+int				ft_add_minus(int len, t_info *block, char **buffer);
 
 int				ft_print_ux(unsigned int number, t_info *block);
 

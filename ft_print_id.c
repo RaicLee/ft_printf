@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:24:02 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/09 00:34:17 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/09 00:35:27 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_add_minus_id(t_info *block, char **buf)
 	return (result);
 }
 
-int	ft_add_minus_id2(int len, t_info *block, char **buf)
+int	ft_add_minus(int len, t_info *block, char **buf)
 {
 	int		result;
 
@@ -112,7 +112,7 @@ int	ft_print_id(int num, t_info *block)
 			free(buffer);
 		return (-1);
 	}
-	if ((temp = ft_add_minus_id2(temp, block, &buffer)) < 0)
+	if ((temp = ft_add_minus(temp, block, &buffer)) < 0)
 		return (-1);
 	result += temp;
 	ft_putstr(buffer);

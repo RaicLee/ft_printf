@@ -6,7 +6,7 @@
 /*   By: jealee <jealee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:26:03 by jealee            #+#    #+#             */
-/*   Updated: 2021/03/08 22:21:39 by jealee           ###   ########.fr       */
+/*   Updated: 2021/03/09 00:36:06 by jealee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_print_ux(unsigned int number, t_info *block)
 			free(buffer);
 		return (-1);
 	}
-	if ((len = ft_add_minus_id2(len, block, &buffer)) < 0)
+	if ((len = ft_add_minus(len, block, &buffer)) < 0)
 		return (-1);
 	result += len;
 	ft_putstr(buffer);
